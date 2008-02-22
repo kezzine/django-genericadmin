@@ -1,0 +1,5 @@
+#summary What is this?
+
+= Introduction =
+
+*genericadmin* adds support for generic relations in Django's admin interface.  For more background information check out my [http://net-x.org/weblog/2006/dec/19/django-generic-relations-made-easier-part-2/ blog post] about my original version.
