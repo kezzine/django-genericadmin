@@ -35,4 +35,4 @@ add:
 
 Copy the _admin_ folder in _templates_ into your _templates directory_.
 
-Finally, copy the files in the _js_ folder into your _media root_.
+Finally, copy the files in the _js_ folder into your _media root_ and modify the _ ADMIN_MEDIA_URL_ variable at the top of the _genericadmin.js_ file to match your media url.
