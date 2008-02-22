@@ -1,5 +1,7 @@
+/* genericadmin - Weston Nielson (wnielson@gmail.com)
+*/
+
 var ADMIN_MEDIA_URL = '/media/';
-var MODEL_URL_ARRAY = {17: "food/calorie", 11: "food/calorieingregient", 5: "contenttypes/contenttype", 2: "auth/group", 9: "food/ingredient", 8: "food/ingredientlist", 18: "admin/logentry", 16: "food/measurement", 12: "food/menu", 1: "auth/message", 10: "food/nutritioningregientset", 15: "food/nutritionset", 14: "food/nutritionsubclass", 4: "auth/permission", 13: "food/recipe", 6: "sessions/session", 7: "sites/site", 3: "auth/user"};    // This is defined in the template: {1: 'auth/message', 2: 'auth/group', 3: 'auth/user'}
 
 function GenericObject(i, objectIdEl) {
     this.objectIdEl = objectIdEl;
