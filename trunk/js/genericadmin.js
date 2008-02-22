@@ -58,6 +58,9 @@ function GenericObject(i, objectIdEl) {
             // Now we need to politely ask the server to give us some info on this content_type, object_id combo
             self.objectId = this.value;
             self.updateObjectIdEl();
+        }).focus(function(){    // Temporary fix for Safari...
+            self.objectId = this.value;
+            self.updateObjectIdEl();
         });
     };
     
@@ -90,8 +93,9 @@ function GenericObject(i, objectIdEl) {
         }
         win = window.open(href, name, 'height=500,width=800,resizable=yes,scrollbars=yes');
         
+        // TODO: This apparently doesn't work in safari...
         $(win).bind('beforeunload', function() {
-            // This complicated guy is needed becase when the window is 'unloaded' the value selected isn't
+            // This complicated guy is needed because when the window is 'unloaded' the value selected isn't
             // inserted in the object_id field quite yet, so we set a small delay--setTimeout is a pain...
             function timedReset(me) {
                 var me = me;
