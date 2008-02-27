@@ -31,7 +31,12 @@ function GenericObject(i, objectIdEl) {
     this.__init__ = function() {
         // sets the associated content_type element
         vars = this.objectIdEl.id.split('-');   // should return 3 items: ["id_ingredientlist_set", "2", "content_type"]
-        id = '#' + vars[0] + '-' + vars[1] + '-content_type';
+        
+        if (vars.length==1) { //not an inline edit
+            id = '#id_content_type';
+        } else {
+            id = '#' + vars[0] + '-' + vars[1] + '-content_type';
+        }
         this.contentTypeEl = $(id)[0];
         
         if (this.contentTypeEl.value) {
