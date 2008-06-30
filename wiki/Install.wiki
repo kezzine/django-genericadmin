@@ -2,18 +2,7 @@
 #labels Installation
 
 = Requirements =
-First of all, this was made to work with *newforms-admin*.  I haven't tested it against Django's trunk version of the admin site.  If anyone tests this, please let me know if it works (if it doesn't, the fix will almost certainly be trivial).
-
-Also, if you're using newforms-admin, there is tiny bug in Django which needs to be fixed. The issues is highlighted here [http://code.djangoproject.com/ticket/6307 #6307].  Untill this gets patched here's how you fix it:
-
-Open _django/contrib/admin/media/js/admin/RelatedObjectLookups.js_, scroll down and change these lines:
-
-{{{
-....
-newId = html_unescape(newId.toString());
-newRepr = html_unescape(newRepr.toString());
-....
-}}}
+First of all, this was made to work with *newforms-admin*.  I haven't tested it against Django's trunk version of the admin site, but it supposedly works (thanks Joe).
 
 Finally, jQuery is required (but included).
 
