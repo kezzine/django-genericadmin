@@ -129,7 +129,7 @@ function GenericObject(i, objectIdEl) {
         lookupText:     this.lookupText,
         lookupLink:     this.lookupLink,
         updateObjectIdEl:   this.updateObjectIdEl,
-        showRelatedObjectLookupPopup:   this.showRelatedObjectLookupPopup,
+        showRelatedObjectLookupPopup:   this.showRelatedObjectLookupPopup
     }
 };
 
