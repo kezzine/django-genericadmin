@@ -1,5 +1,5 @@
 #summary What is this?
-#labels readme
+#labels readme,Deprecated
 
 = Introduction =
 
