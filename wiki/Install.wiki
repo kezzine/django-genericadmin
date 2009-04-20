@@ -1,27 +1,20 @@
-#summary How to install genericadmin
-#labels Installation,Deprecated,0.1
+#summary One-sentence summary of this page.
+#labels Installation
 
 = Requirements =
-First of all, this was made to work with *newforms-admin*.  I haven't tested it against Django's trunk version of the admin site, but it supposedly works (thanks Joe).
 
-Finally, jQuery is required (but included).
+The trunk version requires some of the newer features of Django.  You will need *at least* revision 9739.
 
 = Installation =
 
-Installation is pretty simple.
+The trunk version of genericadmin is also easier to install than the previous version (0.1 in tags).  To install it, simply add `genericadmin` to your `INSTALLED_APPS`.  If you've defined a custom `base_site.html` within your templates directory then you will need to add the following to it:
 
-First, place the _genericadmin_ app somewhere in your python path and add it into your settings.py
-
-In your main urls.py, right *before*:
 {{{
-('^admin/(.*)', admin.site.root)
+{% block extrahead %}
+  {{ block.super }}
+  <script type="text/javascript">{% include "admin/genericadmin/genericadmin.js" %}</script>
+{% endblock %}
 }}}
 
-add:
-{{{
-(r'^admin/obj_lookup/$', 'genericadmin.views.generic_lookup'),
-}}}
 
-Copy the _admin_ folder in _templates_ into your _templates directory_.
-
-Finally, copy the files in the _js_ folder into your _media root_ and modify the _ ADMIN_MEDIA_URL_ variable at the top of the _genericadmin.js_ file to match your media url.
+That is it.  There is no longer  a need to move `genericadmin.js` into your media root.  Also, jQuery is required, but will be included automatically using Google's CDN *only if* you haven't already included jQuery.
