@@ -1,5 +1,5 @@
 #summary How to install genericadmin
-#labels Installation
+#labels Installation,Deprecated,0.1
 
 = Requirements =
 First of all, this was made to work with *newforms-admin*.  I haven't tested it against Django's trunk version of the admin site, but it supposedly works (thanks Joe).
