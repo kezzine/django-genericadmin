@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.http import Http404, HttpResponse
 from django.template import Context, Template
+from django.utils import simplejson
 
 from django.contrib.contenttypes.models import ContentType
 
@@ -37,6 +38,14 @@ def generic_lookup(request):
             for obj in objs:
                 objects.append(get_obj(obj[0], obj[1]))
         if objects:
-            t = Template(JSON_TEMPLATE)
-            c = Context({'objects': objects})
-            return HttpResponse(t.render(c), mimetype='text/plaintext')
+            objs = []
+            for obj in objects:
+                objs.append({
+                    "contentTypeId":    obj['content_type_id'],
+                    "contentTypeText":  obj['content_type_text'],
+                    "objectId":         obj['object_id'],
+                    "objectText":       obj['object_text']
+                })
+            #t = Template(JSON_TEMPLATE)
+            #c = Context({'objects': objects})
+            return HttpResponse(simplejson.dumps(objs), mimetype='application/json')

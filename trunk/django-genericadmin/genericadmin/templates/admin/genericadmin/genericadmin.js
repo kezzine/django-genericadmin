@@ -4,8 +4,10 @@
     genericadmin - Weston Nielson (wnielson@gmail.com)
 */
 
+/*
 if (typeof(JQUERY_LIB) == 'undefined')
   var JQUERY_LIB = "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js";
+*/
 if (typeof(GENERIC_ADMIN_DELAY_INIT) == 'undefined')
   var GENERIC_ADMIN_DELAY_INIT = false;
 var ADMIN_MEDIA_URL = "{% admin_media_prefix %}";
@@ -44,6 +46,7 @@ function loadFile(filename, filetype) {
 };
 
 function GenericObject(i, objectIdEl) {
+    $ = django.jQuery;
     this.objectIdEl = objectIdEl;
     this.contentTypeEl;
     
@@ -158,13 +161,11 @@ function GenericObject(i, objectIdEl) {
             // A change has been made, so let's double check that the values are sane (i.e not empty)
             if (this.objectIdEl.value && this.contentTypeId) {
                 self.lookupText.text('loading...');
-                $.getJSON(ADMIN_OBJ_LOOKUP_URL, {object_id: this.objectIdEl.value, content_type: this.contentTypeId},
-                    function(data) {
-                        item = data[0];
-                        self.lookupText.text('');   // Clear out the `loading...` text
-                        if (item.objectText) {
-                            self.lookupText.text(item.objectText);
-                        }
+                $.getJSON(ADMIN_OBJ_LOOKUP_URL, {object_id: this.objectIdEl.value, content_type: this.contentTypeId}, function(data) {
+                    item = data[0];
+                    self.lookupText.text('');   // Clear out the `loading...` text
+                    if (item.objectText)
+                        self.lookupText.text(item.objectText);
                 });
             }
         }
@@ -184,16 +185,18 @@ function GenericObject(i, objectIdEl) {
 };
 
 // Load jQuery dynamically if it isn't included already
+/*
 if (typeof(jQuery) == 'undefined') {
   loadFile(JQUERY_LIB, "js");
 }
+*/
 
 if (typeof(GENERIC_ADMIN_DELAY_INIT) == 'undefined') {
   // Allow init to be delayed (stopped)
   var GENERIC_ADMIN_DELAY_INIT = false;
 }
 
-$(document).ready(function() {
+django.jQuery(document).ready(function() {
     if (!GENERIC_ADMIN_DELAY_INIT)
-      $("[id$='object_id']").each(GenericObject);
+      django.jQuery("[id$='object_id']").each(GenericObject);
 });
